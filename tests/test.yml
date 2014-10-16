@@ -1,0 +1,4 @@
+-
+  CopyFile:
+    src: 1.txt
+    dst: 2.txt
