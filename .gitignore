@@ -1,2 +1,3 @@
-tests/*.txt
+tests/output
 *.gem
+Gemfile.Lock

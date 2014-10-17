@@ -1,4 +1,8 @@
 -
   CopyFile:
-    src: 1.txt
-    dst: 2.txt
+    src: output/1.txt
+    dst: output/2.txt
+-
+  ZipFile:
+    src: output/1.txt
+    dst: output/2.zip

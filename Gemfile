@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
 
-gem 'thor'
+gem 'rubyzip', '>= 1.0.0'
