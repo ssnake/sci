@@ -23,7 +23,7 @@ module SCI
 					    # Two arguments:
 					    # - The name of the file as it will appear in the archive
 					    # - The original file, including the path to find it
-					    zipfile.add(filename, filename)
+					    zipfile.add(File.basename(filename), filename)
 					  end
 					  #zipfile.get_output_stream("myFile") { |os| os.write "myFile contains just this" }
 					end

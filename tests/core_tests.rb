@@ -29,7 +29,7 @@ class TestCore < Test::Unit::TestCase
 	end
 	def test_zip_file_action2
 		create_file "1.txt"
-		SCI::Core.new 'ZipFile', "output/1.txt", "output/222.zip"
+		SCI::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
 		assert File.exist? "output/222.zip"
 	end
 end
