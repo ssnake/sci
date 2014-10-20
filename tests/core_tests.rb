@@ -32,4 +32,7 @@ class TestCore < Test::Unit::TestCase
 		SCI::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
 		assert File.exist? "output/222.zip"
 	end
+	def test_replace_str
+		SCI::Core.new 'ReplaceStr', 'MNSS.rc', '#define.*?VER_COMPANYNAME_STR.*?"(.*?)\0"', 'test'
+	end
 end
