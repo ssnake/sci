@@ -16,18 +16,18 @@ module SCI
 					pattern = Regexp.new pattern
 					
 					puts "pattern #{pattern.inspect}"
-					puts "repl #{replacment}"
+					puts "repl111 #{replacment}"
 					File.open(filename, 'r+') do |f|
 						out = ''
 						f.each do |line|
+							puts "found pattern " if line =~ pattern
 							o = line.gsub(pattern, replacment)
-							
 							out << o
 						end
 						f.pos = 0
 						f.print out
 						f.truncate f.pos
-						puts out
+						
 					end
 				end
 			end
