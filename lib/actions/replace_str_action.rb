@@ -11,7 +11,7 @@ module SCI
 						pattern = params[2]
 						replacment = params[3]
 					else
-						raise "Wrong number of params. Expected 3 but #{params.count}"
+						raise "Wrong number of params. Expected 4 but #{params.count}"
 					end
 					pattern = Regexp.new pattern
 					

@@ -1,0 +1,1 @@
+copy sci C:\Ruby200\lib\ruby\gems\2.0.0\gems\sci-0.1.0\bin\sci

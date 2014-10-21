@@ -13,6 +13,7 @@ module Helper
 					return cl
 				end
 			end
+			raise "Unable to find #{name} action"
 			nil
 		end	
 end
