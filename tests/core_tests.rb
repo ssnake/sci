@@ -32,6 +32,11 @@ class TestCore < Test::Unit::TestCase
 		SCI::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
 		assert File.exist? "output/222.zip"
 	end
+	def test_zip_existed_file
+		create_file '1.txt'
+		SCI::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
+		SCI::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
+	end
 	def test_replace_str
 
 		create_file 'repl_test.txt', '

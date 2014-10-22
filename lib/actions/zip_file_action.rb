@@ -18,6 +18,13 @@ module SCI
 					if src.is_a? String
 						src = [src]
 					end
+					#overwrite existed files in zip
+					Zip.setup do |c|
+					    c.on_exists_proc = true
+					    c.continue_on_exists_proc = true
+					    c.unicode_names = true
+					    c.default_compression = Zlib::BEST_COMPRESSION
+					end
 					Zip::File.open(dst, Zip::File::CREATE) do |zipfile|
 					  src.each do |filename|
 					    # Two arguments:
