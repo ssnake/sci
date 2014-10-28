@@ -16,6 +16,14 @@ class TestCore < Test::Unit::TestCase
 		SCI::Core.new 'test.yml'
 		assert_equal 'boo!', File.read('output/2.txt')
 	end
+	def test_copy_existed_file
+		create_file '1.txt'
+		create_file '11.txt', 'gagaga'
+		SCI::Core.new 'CopyFile',"output/1.txt", "output/2.txt"
+		SCI::Core.new 'CopyFile',"output/11.txt", "output/2.txt"
+		assert_equal 'gagaga', File.read('output/2.txt')
+		
+	end
 	def test_command_line_start
 		create_file "1.txt"
 		SCI::Core.new "CopyFile", "output/1.txt", "output/2.txt"
@@ -51,5 +59,12 @@ class TestCore < Test::Unit::TestCase
 		new_text = File.read('output/repl_test.txt')
 		
 		assert new_text =~ /#define VER_COMPANYNAME_STR         " aaaaa \\0"/m
+	end
+	def test_rename_file
+		create_file '1.txt'
+		SCI::Core.new 'RenameFile', 'output/1.txt', 'output/2.txt'
+		assert File.exists? 'output/2.txt'
+		assert !(File.exists? 'output/1.txt')
+
 	end
 end
