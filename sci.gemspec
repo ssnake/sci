@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name    = 'sci'
-  s.version = '0.1.1'
+  s.version = '0.1.2'
   s.date    = '2014-10-17'
   s.summary = 'simple continuous intergration system'
   s.description = 'SCI allows you to make simple scenarios. All scenarios have YML structure and they are easy-reading'

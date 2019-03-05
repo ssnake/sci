@@ -1,7 +1,8 @@
 require_relative '../lib/core.rb'
-require "test/unit"
 
-class CoreTest < Test::Unit::TestCase
+require "minitest/autorun"
+
+class CoreTest < Minitest::Test
 	def setup
 		FileUtils.mkdir 'output' unless File.exists? 'output'
 		FileUtils.rm_r  Dir.glob("output/*")
@@ -13,7 +14,7 @@ class CoreTest < Test::Unit::TestCase
 	end
 	def test_copy_file_action
 		create_file "1.txt"
-		SCI::Core.new 'test.yml'
+		SCI::Core.new './test.yml'
 		assert_equal 'boo!', File.read('output/2.txt')
 	end
 	def test_copy_existed_file

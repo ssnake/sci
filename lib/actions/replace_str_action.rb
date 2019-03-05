@@ -15,12 +15,12 @@ module SCI
 					end
 					pattern = Regexp.new pattern
 					
-					puts "pattern #{pattern.inspect}"
-					puts "repl111 #{replacment}"
+					puts "pattern #{pattern}"
+					puts "replacement #{replacment}"
 					File.open(filename, 'r+') do |f|
 						out = ''
 						f.each do |line|
-							puts "found pattern " if line =~ pattern
+							puts "found pattern!" if line =~ pattern
 							o = line.gsub(pattern, replacment)
 							out << o
 						end
