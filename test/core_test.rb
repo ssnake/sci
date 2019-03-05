@@ -1,7 +1,7 @@
 require_relative '../lib/core.rb'
 require "test/unit"
 
-class TestCore < Test::Unit::TestCase
+class CoreTest < Test::Unit::TestCase
 	def setup
 		FileUtils.mkdir 'output' unless File.exists? 'output'
 		FileUtils.rm_r  Dir.glob("output/*")
