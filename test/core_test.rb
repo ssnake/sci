@@ -1,27 +1,31 @@
 require_relative '../lib/core.rb'
-
+require 'byebug'
 require "minitest/autorun"
 
 class CoreTest < Minitest::Test
 	def setup
-		FileUtils.mkdir 'output' unless File.exists? 'output'
+		Dir.chdir "#{File.dirname(__FILE__)}"
+		
+		FileUtils.mkdir 'output' unless File.exist? 'output'
 		FileUtils.rm_r  Dir.glob("output/*")
 		
 
 	end
 	def create_file name, text='boo!'
+
 		File.open('output/'+name, "w+") { |file| file.write(text) }
 	end
 	def test_copy_file_action
+		puts "Test1 pwd: #{Dir.pwd}"
 		create_file "1.txt"
-		SCI::Core.new './test.yml'
+		SCI::Core.new 'test.yml'
 		assert_equal 'boo!', File.read('output/2.txt')
 	end
 	def test_copy_existed_file
 		create_file '1.txt'
 		create_file '11.txt', 'gagaga'
-		SCI::Core.new 'CopyFile',"output/1.txt", "output/2.txt"
-		SCI::Core.new 'CopyFile',"output/11.txt", "output/2.txt"
+		SCI::Core.new "CopyFile", "output/1.txt", "output/2.txt"
+		SCI::Core.new "CopyFile", "output/11.txt", "output/2.txt"
 		assert_equal 'gagaga', File.read('output/2.txt')
 		
 	end
@@ -64,8 +68,8 @@ class CoreTest < Minitest::Test
 	def test_rename_file
 		create_file '1.txt'
 		SCI::Core.new 'RenameFile', 'output/1.txt', 'output/2.txt'
-		assert File.exists? 'output/2.txt'
-		assert !(File.exists? 'output/1.txt')
+		assert File.exist? 'output/2.txt'
+		assert !(File.exist? 'output/1.txt')
 
 	end
 end

@@ -1,10 +1,12 @@
 $LOAD_PATH << File.dirname(__FILE__)
 require 'helper'
 require 'yaml'
+require 'logger'
 
 module SCI
 	class Core
 		include Helper
+
 		def initialize *args
 			
 			if args.count == 1 && args[0].is_a?(String)
@@ -14,7 +16,7 @@ module SCI
 				action = args[0]
 				a = find_action_class action
 				return if a.nil?
-				a.action *args
+				a.action args
 			else
 			  raise "Wrong parameter format"
 			end 

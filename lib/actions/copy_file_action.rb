@@ -3,16 +3,15 @@ module SCI
 	module Actions
 		class CopyFile
 			class << self
-				def action *params
-					if params.count == 1 && params[0].is_a?(Hash)
-
-						src = params[0]['src']
-						dst = params[0]['dst']
+				def action params
+					if params.is_a?(Hash)
+						src = params['src']
+						dst = params['dst']
 					elsif params.count == 3
 						src = params[1]
 						dst = params[2]
 					else
-						raise "Wrong number of params. Expected 3 but #{params.count}"
+						raise "Wrong params #{params}"
 					end
 
 					FileUtils.cp src, dst
