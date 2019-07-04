@@ -71,7 +71,40 @@ class CoreTest < Minitest::Test
 		assert !(File.exist? 'output/1.txt')
 	end
 
-	def test_gen_commit
+	def test_changelog_gen_commit
+		FileUtils.rm 'test_change.log' if File.exist? 'test_change.log'
 		Sci::Core.new 'GenChangelog', 'HEAD~10', 'HEAD', 'test_change.log'
+		assert File.exist? 'test_change.log'
+	end
+
+	def test_parse_features
+logs = """
+feat: feature. feat: feature2
+feat: feature3 : fakefeature
+test: test1. test: test2
+test: test3
+fixed re #123
+:::test
+....
+
+"""
+		assert_equal '{"feat"=>["feature", "feature2", "feature3 : fakefeature"], "test"=>["test1", "test2", "test3"]}', Sci::Actions::GenChangelog.parse_features(logs).to_s
+	end
+
+	def test_decorate_features
+		tags = {'feature': ['feat1', 'feat2'], 'test': ['test1', 'test2']}
+		expected_str = 
+"""feature:
+* feat1
+* feat2
+
+test:
+* test1
+* test2
+
+"""
+		
+		str = Sci::Actions::GenChangelog.decorate_features(tags).to_s
+		assert_equal expected_str.dump, str.dump
 	end
 end
