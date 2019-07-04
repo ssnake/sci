@@ -95,10 +95,12 @@ fixed re #123
 		tags = {'feature': ['feat1', 'feat2'], 'test': ['test1', 'test2']}
 		expected_str = 
 """feature:
+
 * feat1
 * feat2
 
 test:
+
 * test1
 * test2
 

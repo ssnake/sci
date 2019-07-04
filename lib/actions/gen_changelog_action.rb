@@ -38,7 +38,7 @@ module Sci::Actions
       def decorate_features tags
         output = ''
         tags.each_key  do |k|
-          output << "#{k}:\n"
+          output << "#{k}:\n\n"
           tags[k].each { |v| output << "* #{v}\n" }
           
           output << "\n"
