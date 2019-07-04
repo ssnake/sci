@@ -2,7 +2,7 @@ require 'fileutils'
 
 module SCI
 	module Actions
-		class ReplaceStr
+		class ReplaceStr < Basic
 			class << self
 				def action params
 					if params.is_a?(Hash)
@@ -16,12 +16,12 @@ module SCI
 					end
 					pattern = Regexp.new pattern
 					
-					puts "pattern #{pattern}"
-					puts "replacement #{replacment}"
+					log "pattern #{pattern}"
+					log "replacement #{replacment}"
 					File.open(filename, 'r+') do |f|
 						out = ''
 						f.each do |line|
-							puts "found pattern!" if line =~ pattern
+							log "found pattern!" if line =~ pattern
 							o = line.gsub(pattern, replacment)
 							out << o
 						end

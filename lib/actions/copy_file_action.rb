@@ -1,7 +1,7 @@
 require 'fileutils'
 module SCI
 	module Actions
-		class CopyFile
+		class CopyFile < Basic
 			class << self
 				def action params
 					if params.is_a?(Hash)

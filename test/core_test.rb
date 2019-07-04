@@ -16,7 +16,6 @@ class CoreTest < Minitest::Test
 		File.open('output/'+name, "w+") { |file| file.write(text) }
 	end
 	def test_copy_file_action
-		puts "Test1 pwd: #{Dir.pwd}"
 		create_file "1.txt"
 		SCI::Core.new 'test.yml'
 		assert_equal 'boo!', File.read('output/2.txt')

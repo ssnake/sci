@@ -1,7 +1,7 @@
 require 'fileutils'
 module SCI
 	module Actions
-		class RenameFile
+		class RenameFile < Basic
 			class << self
 				def action params
 					if params.is_a?(Hash)

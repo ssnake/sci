@@ -2,7 +2,7 @@ require 'fileutils'
 require 'zip'
 module SCI
 	module Actions
-		class ZipFile
+		class ZipFile < Basic
 			class << self
 				def action params
 					if params.is_a?(Hash)
