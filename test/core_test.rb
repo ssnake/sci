@@ -17,37 +17,37 @@ class CoreTest < Minitest::Test
 	end
 	def test_copy_file_action
 		create_file "1.txt"
-		SCI::Core.new 'test.yml'
+		Sci::Core.new 'test.yml'
 		assert_equal 'boo!', File.read('output/2.txt')
 	end
 	def test_copy_existed_file
 		create_file '1.txt'
 		create_file '11.txt', 'gagaga'
-		SCI::Core.new "CopyFile", "output/1.txt", "output/2.txt"
-		SCI::Core.new "CopyFile", "output/11.txt", "output/2.txt"
+		Sci::Core.new "CopyFile", "output/1.txt", "output/2.txt"
+		Sci::Core.new "CopyFile", "output/11.txt", "output/2.txt"
 		assert_equal 'gagaga', File.read('output/2.txt')
 		
 	end
 	def test_command_line_start
 		create_file "1.txt"
-		SCI::Core.new "CopyFile", "output/1.txt", "output/2.txt"
+		Sci::Core.new "CopyFile", "output/1.txt", "output/2.txt"
 		
 		assert_equal 'boo!', File.read('output/2.txt')
 	end
 	def test_zip_file_action
 		create_file "1.txt"
-		SCI::Core.new 'test.yml'
+		Sci::Core.new 'test.yml'
 		assert File.exist? "output/2.zip"
 	end
 	def test_zip_file_action2
 		create_file "1.txt"
-		SCI::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
+		Sci::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
 		assert File.exist? "output/222.zip"
 	end
 	def test_zip_existed_file
 		create_file '1.txt'
-		SCI::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
-		SCI::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
+		Sci::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
+		Sci::Core.new 'ZipFile', "output/1.txt", "output/../output/222.zip"
 	end
 	def test_replace_str
 
@@ -59,19 +59,19 @@ class CoreTest < Minitest::Test
 #define VER_FILEVERSION             3,10,349,0
 #define VER_FILEVERSION_STR         "3.10.349.0\0"
 '
-		SCI::Core.new 'ReplaceStr', 'output/repl_test.txt', '(#define.*?VER_COMPANYNAME_STR.*?")(.*?)(\\\\0")', '\1 aaaaa \3'
+		Sci::Core.new 'ReplaceStr', 'output/repl_test.txt', '(#define.*?VER_COMPANYNAME_STR.*?")(.*?)(\\\\0")', '\1 aaaaa \3'
 		new_text = File.read('output/repl_test.txt')
 		
 		assert new_text =~ /#define VER_COMPANYNAME_STR         " aaaaa \\0"/m
 	end
 	def test_rename_file
 		create_file '1.txt'
-		SCI::Core.new 'RenameFile', 'output/1.txt', 'output/2.txt'
+		Sci::Core.new 'RenameFile', 'output/1.txt', 'output/2.txt'
 		assert File.exist? 'output/2.txt'
 		assert !(File.exist? 'output/1.txt')
 	end
 
 	def test_gen_commit
-		SCI::Core.new 'GenChangelog', 'HEAD~10', 'HEAD', 'test_change.log'
+		Sci::Core.new 'GenChangelog', 'HEAD~10', 'HEAD', 'test_change.log'
 	end
 end

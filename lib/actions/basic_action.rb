@@ -1,7 +1,7 @@
-module SCI::Actions
+module Sci::Actions
     class Basic
-      include SCI::Logger
-      extend SCI::Logger
+      include Sci::Logger
+      extend Sci::Logger
 
     end
 end

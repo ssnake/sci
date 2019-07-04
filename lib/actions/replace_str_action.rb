@@ -1,6 +1,6 @@
 require 'fileutils'
 
-module SCI
+module Sci
 	module Actions
 		class ReplaceStr < Basic
 			class << self

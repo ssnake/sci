@@ -1,6 +1,6 @@
 require 'fileutils'
 require 'zip'
-module SCI
+module Sci
 	module Actions
 		class ZipFile < Basic
 			class << self

@@ -1,4 +1,4 @@
-module SCI
+module Sci
   module Logger
     def log msg
       puts "Looking for #{name}" unless ENV['SCI_DEBUG'].nil?

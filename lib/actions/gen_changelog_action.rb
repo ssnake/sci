@@ -1,4 +1,4 @@
-module SCI::Actions
+module Sci::Actions
   class GenChangelog < Basic
     class << self
       def action params

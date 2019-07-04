@@ -1,9 +1,14 @@
-$LOAD_PATH << File.dirname(__FILE__)
-require 'helper'
-require 'yaml'
-require 'logger'
+module Sci
+	$LOAD_PATH << File.dirname(__FILE__)
+	require 'logger.rb'
 
-module SCI
+	require_relative File.join('actions', 'basic_action.rb')
+	Dir["#{File.dirname(__FILE__)}/actions/*_action.rb"].each { |f| require(f) }
+	
+	require 'helper.rb'
+	require 'yaml'
+
+
 	class Core
 		include Helper
 

@@ -1,5 +1,5 @@
 require 'fileutils'
-module SCI
+module Sci
 	module Actions
 		class CopyFile < Basic
 			class << self

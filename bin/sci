@@ -3,10 +3,11 @@
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'core'
+
 begin
-SCI::Core.new *ARGV
-rescue Exception => e
-	
+  Sci::Core.new *ARGV
+rescue Exception => e	
 	abort "#{e.message}\n#{e.backtrace.inspect}" 
 end
+
 exit 0
