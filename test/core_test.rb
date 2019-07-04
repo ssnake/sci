@@ -69,6 +69,9 @@ class CoreTest < Minitest::Test
 		SCI::Core.new 'RenameFile', 'output/1.txt', 'output/2.txt'
 		assert File.exist? 'output/2.txt'
 		assert !(File.exist? 'output/1.txt')
+	end
 
+	def test_gen_commit
+		SCI::Core.new 'GenChangelog', 'HEAD~10', 'HEAD', 'test_change.log'
 	end
 end

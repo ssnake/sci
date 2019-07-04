@@ -3,3 +3,4 @@ tests/output
 Gemfile.Lock
 output
 .byebug_history
+*.log
