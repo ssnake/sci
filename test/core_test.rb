@@ -73,12 +73,14 @@ class CoreTest < Minitest::Test
 
 	def test_changelog_gen_commit
 		FileUtils.rm 'test_change.log' if File.exist? 'test_change.log'
-		Sci::Core.new 'GenChangelog', 'HEAD~10', 'HEAD', 'test_change.log'
+		Sci::Core.new 'GenChangelog', 'HEAD~10', 'HEAD', 'test_change.log', "HEADER\n"
 		assert File.exist? 'test_change.log'
 	end
 
 	def test_parse_features
 logs = """
+HEADER
+
 feat: feature. feat: feature2
 feat: feature3 : fakefeature
 test: test1. test: test2

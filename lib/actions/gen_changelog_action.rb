@@ -6,19 +6,21 @@ module Sci::Actions
           from_commit = params['from_commit']
           to_commit = params['to_commint']
           output_fn = params['output_fn']
-        elsif params.count == 4
+          header = params['header']
+        elsif params.count >= 4
           from_commit = params[1]
           to_commit = params[2]
           output_fn = params[3]
+          header = params[4]
         else
           raise "Wrong params #{params}"
         end
         logs = %x( git log --pretty=format:"%s" #{from_commit}..#{to_commit})
         tags =  parse_features(logs) 
-        
+
         txt = nil
         txt = File.read(output_fn) if File.exist? output_fn
-        txt = decorate_features(tags) + txt.to_s
+        txt = header.to_s + decorate_features(tags) + txt.to_s
         File.write(output_fn, txt, mode: 'w')
       end
 
