@@ -20,6 +20,7 @@ module Sci::Actions
 
         txt = nil
         txt = File.read(output_fn) if File.exist? output_fn
+        header = header + "\n\n" unless header.nil?
         txt = header.to_s + decorate_features(tags) + txt.to_s
         File.write(output_fn, txt, mode: 'w')
       end
