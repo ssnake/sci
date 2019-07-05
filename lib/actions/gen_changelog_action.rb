@@ -15,11 +15,11 @@ module Sci::Actions
         end
         logs = %x( git log --pretty=format:"%s" #{from_commit}..#{to_commit})
         tags =  parse_features(logs) 
+        
         txt = nil
-
         txt = File.read(output_fn) if File.exist? output_fn
         txt = decorate_features(tags) + txt.to_s
-        File.write(output_fn, txt, mode: 'a')
+        File.write(output_fn, txt, mode: 'w')
       end
 
       def parse_features logs
