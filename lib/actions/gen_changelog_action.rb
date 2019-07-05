@@ -15,7 +15,11 @@ module Sci::Actions
         end
         logs = %x( git log --pretty=format:"%s" #{from_commit}..#{to_commit})
         tags =  parse_features(logs) 
-        File.write(output_fn, decorate_features(tags), mode: 'a')
+        txt = nil
+
+        txt = File.read(output_fn) if File.exist? output_fn
+        txt = decorate_features(tags) + txt.to_s
+        File.write(output_fn, txt, mode: 'a')
       end
 
       def parse_features logs
@@ -38,8 +42,8 @@ module Sci::Actions
       def decorate_features tags
         output = ''
         tags.each_key  do |k|
-          output << "#{k}:\n\n"
-          tags[k].each { |v| output << "* #{v}\n" }
+          output << " #{k.capitalize}:\n\n"
+          tags[k].each { |v| output << "   * #{v}\n" }
           
           output << "\n"
         end

@@ -94,15 +94,15 @@ fixed re #123
 	def test_decorate_features
 		tags = {'feature': ['feat1', 'feat2'], 'test': ['test1', 'test2']}
 		expected_str = 
-"""feature:
+""" Feature:
 
-* feat1
-* feat2
+   * feat1
+   * feat2
 
-test:
+ Test:
 
-* test1
-* test2
+   * test1
+   * test2
 
 """
 		
